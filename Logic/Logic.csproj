@@ -55,6 +55,7 @@
     <Compile Include="BotSettings.cs" />
     <Compile Include="Commands\Command.cs" />
     <Compile Include="Commands\HelloCommand.cs" />
+    <Compile Include="Commands\PhotoCommand.cs" />
     <Compile Include="TelegramBot.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

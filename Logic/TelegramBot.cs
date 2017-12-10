@@ -11,7 +11,7 @@ namespace Logic
         private static TelegramBotClient _client;
         private static List<Command> _commandsList;
 
-        public static IReadOnlyList<Command> Commands { get => _commandsList.AsReadOnly(); }
+        public static IReadOnlyList<Command> Commands => _commandsList.AsReadOnly();
 
 
         public static async Task<TelegramBotClient> Get()
@@ -21,13 +21,13 @@ namespace Logic
                 return _client;
             }
 
-            _commandsList = new List<Command>();
-            _commandsList.Add(new HelloCommand());
+            _commandsList = new List<Command>{ new HelloCommand(), new PhotoCommand() };
+
             //TODO: add more commands
 
             _client = new TelegramBotClient(BotSettings.Key);
             var hook = string.Format(BotSettings.Url, "api/message/update");
-            await _client.SetWebhookAsync();
+            await _client.SetWebhookAsync(hook);
 
             return _client;
         }
